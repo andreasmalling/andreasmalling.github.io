@@ -23,10 +23,16 @@ function generateMstrAnimation(wordList, options = {}) {
   
   // Validate words contain 'm', 's', 't', 'r' in that order
   const validWords = wordList.filter(word => containsMSTR(word));
-  
+
+  // Randomize order of words
+  shuffle(validWords);
+
+  // add 'mstr' as first word
+  const finaleWordList = ["mstr"].concat(validWords);
+
   // Calculate animation timing
-  const totalDuration = config.duration * validWords.length;
-  const singleWordPercentage = 100 / validWords.length;
+  const totalDuration = config.duration * finaleWordList.length;
+  const singleWordPercentage = 100 / finaleWordList.length;
   const fadePercentage = singleWordPercentage * 0.2; // 20% of the word's time for fading
   
   // Generate SVG with styles and animations
@@ -63,7 +69,7 @@ function generateMstrAnimation(wordList, options = {}) {
       }
     }
     
-    ${validWords.map((_, i) => `
+    ${finaleWordList.map((_, i) => `
     #word${i+1} {
       opacity: 0;
       animation: wordAnimation ${totalDuration}s infinite;
@@ -74,7 +80,7 @@ function generateMstrAnimation(wordList, options = {}) {
   <g id="animated-text">`;
   
   // Add each word with properly highlighted letters
-  validWords.forEach((word, index) => {
+  finaleWordList.forEach((word, index) => {
     const lowerWord = word.toLowerCase();
     
     // Find indices of m, s, t, r
@@ -132,4 +138,20 @@ function containsMSTR(word) {
   if (rIndex === -1) return false;
   
   return true;
+}
+
+function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
 }
