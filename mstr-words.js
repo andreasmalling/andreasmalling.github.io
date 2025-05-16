@@ -20,4 +20,10 @@ let words = [
   "madrester",
   "kriminalregister",
   "flammekaster",
+  "rå muskelstyrke",
+  "musetrappe",
+  "maestro",
+  "Manchester",
+  "målstreg",
+  "rumstationer",
 ];
