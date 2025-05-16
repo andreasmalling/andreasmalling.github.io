@@ -2,95 +2,32 @@
 <html lang="da">
 
 <head>
-  <title>Hvad betyder det?</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hvad betyder det?</title>
+    <script type="text/javascript" src="mstr-generator.js"></script>
+    <script type="text/javascript" src="mstr-words.js"></script>
 </head>
 
 <body>
-  <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
-    <style>
-      #animated-text {
-        font-family: 'Times New Roman', serif;
-        font-size: 50px;
-        dominant-baseline: middle;
-        text-anchor: middle;
-      }
-      
-      .bold {
-        font-weight: bold;
-      }
-      
-      .grey {
-        font-weight: normal;
-        fill: gray;
-      }
-      
-      @keyframes wordAnimation {
-        0%, 16% {
-          opacity: 1;
-        }
-        20%, 100% {
-          opacity: 0;
-        }
-      }
-      
-      #word1, #word2, #word3, #word4, #word5 {
-        opacity: 0;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        animation-name: wordAnimation;
-        animation-timing-function: ease-in-out;
-      }
-      
-      #word1 {
-        animation-delay: 0s;
-      }
-      
-      #word2 {
-        animation-delay: 2s;
-      }
-      
-      #word3 {
-        animation-delay: 4s;
-      }
-      
-      #word4 {
-        animation-delay: 6s;
-      }
-      
-      #word5 {
-        animation-delay: 8s;
-      }
+    <div id="animation-container" />
 
-    </style>
-  
-    <g id="animated-text">
-      <!-- mstr -->
-      <text id="word1" x="200" y="50">
-        <tspan class="bold">mstr</tspan>
-      </text>
-      
-      <!-- hamster -->
-      <text id="word2" x="200" y="50">
-        <tspan class="grey">ha</tspan><tspan class="bold">mst</tspan><tspan class="grey">e</tspan><tspan class="bold">r</tspan>
-      </text>
-      
-      <!-- mønster -->
-      <text id="word3" x="200" y="50">
-        <tspan class="bold">m</tspan><tspan class="grey">øn</tspan><tspan class="bold">st</tspan><tspan class="grey">e</tspan><tspan class="bold">r</tspan>
-      </text>
-      
-      <!-- halmstrå -->
-      <text id="word4" x="200" y="50">
-        <tspan class="grey">hal</tspan><tspan class="bold">mstr</tspan><tspan class="grey">å</tspan>
-      </text>
-      
-      <!-- omstrukturering -->
-      <text id="word5" x="200" y="50">
-        <tspan class="grey">o</tspan><tspan class="bold">mstr</tspan><tspan class="grey">ukturering</tspan>
-      </text>
-    </g>
-  </svg>
+    <script>
+        const animationContainer = document.getElementById('animation-container');
+        
+        // Function to generate and display the animation
+        function updateAnimation() {
+            const svg = generateMstrAnimation(words, {
+                width: 500,
+                height: 120,
+                duration: 2
+            });
+            animationContainer.innerHTML = svg;
+        }
 
+        // Initial animation
+        updateAnimation();
+    </script>
 </body>
 
 </html>
