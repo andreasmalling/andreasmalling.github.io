@@ -16,39 +16,13 @@ function generateMstrAnimation(wordList, options = {}) {
   const config = {
     width: options.width || 500,
     height: options.height || 150,
-    fontSize: options.fontSize || 40,
+    fontSize: options.fontSize || 50,
     duration: options.duration || 2,
     fontFamily: options.fontFamily || "Times New Roman, serif"
   };
   
   // Validate words contain 'm', 's', 't', 'r' in that order
-  const validWords = wordList.filter(word => {
-    const lowerWord = word.toLowerCase();
-    
-    // Check if word contains 'm', 's', 't', 'r' in that order
-    let mIndex = lowerWord.indexOf('m');
-    if (mIndex === -1) return false;
-    
-    let sIndex = lowerWord.indexOf('s', mIndex + 1);
-    if (sIndex === -1) return false;
-    
-    let tIndex = lowerWord.indexOf('t', sIndex + 1);
-    if (tIndex === -1) return false;
-    
-    let rIndex = lowerWord.indexOf('r', tIndex + 1);
-    if (rIndex === -1) return false;
-    
-    return true;
-  });
-  
-  // If no valid words, return a message
-  if (validWords.length === 0) {
-    return `<svg viewBox="0 0 ${config.width} ${config.height}" xmlns="http://www.w3.org/2000/svg">
-      <text x="${config.width/2}" y="${config.height/2}" text-anchor="middle" font-family="${config.fontFamily}" font-size="${config.fontSize/2}">
-        No valid words containing 'm', 's', 't', 'r' in that order
-      </text>
-    </svg>`;
-  }
+  const validWords = wordList.filter(word => containsMSTR(word));
   
   // Calculate animation timing
   const totalDuration = config.duration * validWords.length;
@@ -75,8 +49,9 @@ function generateMstrAnimation(wordList, options = {}) {
       font-weight: bold;
     }
     
-    .regular {
+    .grey {
       font-weight: normal;
+      fill: grey;
     }
     
     @keyframes wordAnimation {
@@ -128,7 +103,7 @@ function generateMstrAnimation(wordList, options = {}) {
     svg += `
     <text id="word${index+1}" x="${config.width/2}" y="${config.height/2}">
       ${filteredSegments.map(segment => 
-        `<tspan class="${segment.bold ? 'bold' : 'regular'}">${segment.text}</tspan>`
+        `<tspan class="${segment.bold ? 'bold' : 'grey'}">${segment.text}</tspan>`
       ).join('')}
     </text>`;
   });
@@ -141,12 +116,20 @@ function generateMstrAnimation(wordList, options = {}) {
   return svg;
 }
 
-// Example usage
-// const words = ["mstr", "hamster", "mester", "monstrum", "mønster", "master", "mystery"];
-// const animationSvg = generateMstrAnimation(words, {
-//   duration: 2,
-//   width: 400,
-//   height: 100
-// });
-// 
-// console.log(animationSvg);
+// Function to check if a word contains m,s,t,r in order
+function containsMSTR(word) {
+  const lowerWord = word.toLowerCase();
+  let mIndex = lowerWord.indexOf('m');
+  if (mIndex === -1) return false;
+  
+  let sIndex = lowerWord.indexOf('s', mIndex + 1);
+  if (sIndex === -1) return false;
+  
+  let tIndex = lowerWord.indexOf('t', sIndex + 1);
+  if (tIndex === -1) return false;
+  
+  let rIndex = lowerWord.indexOf('r', tIndex + 1);
+  if (rIndex === -1) return false;
+  
+  return true;
+}
