@@ -1,50 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 
 <head>
-  <title>Nothing to see here</title>
+  <title>Hvad betyder det?</title>
 </head>
 
 <body>
-  <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      #animated-text {
+        font-family: 'Times New Roman', serif;
+        font-size: 50px;
+        dominant-baseline: middle;
+        text-anchor: middle;
+      }
+      
+      .bold {
+        font-weight: bold;
+      }
+      
+      .grey {
+        font-weight: normal;
+        fill: gray;
+      }
+      
+      @keyframes wordAnimation {
+        0%, 16% {
+          opacity: 1;
+        }
+        20%, 100% {
+          opacity: 0;
+        }
+      }
+      
+      #word1, #word2, #word3, #word4, #word5 {
+        opacity: 0;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-name: wordAnimation;
+        animation-timing-function: ease-in-out;
+      }
+      
+      #word1 {
+        animation-delay: 0s;
+      }
+      
+      #word2 {
+        animation-delay: 2s;
+      }
+      
+      #word3 {
+        animation-delay: 4s;
+      }
+      
+      #word4 {
+        animation-delay: 6s;
+      }
+      
+      #word5 {
+        animation-delay: 8s;
+      }
 
-    <!-- First Dot -->
-    <circle cx="40" cy="30" r="8" fill="#3498db">
-      <animate attributeName="opacity" values="0.3; 1; 0.3" dur="1.4s" repeatCount="indefinite" begin="0s" />
-      <animate attributeName="cy" values="30; 24; 30" dur="1.4s" repeatCount="indefinite" begin="0s" />
-    </circle>
-
-    <!-- Second Dot -->
-    <circle cx="60" cy="30" r="8" fill="#3498db">
-      <animate attributeName="opacity" values="0.3; 1; 0.3" dur="1.4s" repeatCount="indefinite" begin="0.2s" />
-      <animate attributeName="cy" values="30; 24; 30" dur="1.4s" repeatCount="indefinite" begin="0.2s" />
-    </circle>
-
-    <!-- Third Dot -->
-    <circle cx="80" cy="30" r="8" fill="#3498db">
-      <animate attributeName="opacity" values="0.3; 1; 0.3" dur="1.4s" repeatCount="indefinite" begin="0.4s" />
-      <animate attributeName="cy" values="30; 24; 30" dur="1.4s" repeatCount="indefinite" begin="0.4s" />
-    </circle>
-
-    <!-- Optional: Shadow effect -->
-    <ellipse cx="60" cy="45" rx="45" ry="6" fill="#000000" opacity="0.05" />
-
-    <!-- Alternative animation variation (hidden by default, remove the display="none" to use) -->
-    <g display="none">
-      <!-- First Dot (alt) -->
-      <circle cx="40" cy="30" r="8" fill="#9b59b6">
-        <animate attributeName="r" values="6; 9; 6" dur="1s" repeatCount="indefinite" begin="0s" />
-      </circle>
-
-      <!-- Second Dot (alt) -->
-      <circle cx="60" cy="30" r="8" fill="#9b59b6">
-        <animate attributeName="r" values="6; 9; 6" dur="1s" repeatCount="indefinite" begin="0.3s" />
-      </circle>
-
-      <!-- Third Dot (alt) -->
-      <circle cx="80" cy="30" r="8" fill="#9b59b6">
-        <animate attributeName="r" values="6; 9; 6" dur="1s" repeatCount="indefinite" begin="0.6s" />
-      </circle>
+    </style>
+  
+    <g id="animated-text">
+      <!-- mstr -->
+      <text id="word1" x="200" y="50">
+        <tspan class="bold">mstr</tspan>
+      </text>
+      
+      <!-- hamster -->
+      <text id="word2" x="200" y="50">
+        <tspan class="grey">ha</tspan><tspan class="bold">mst</tspan><tspan class="grey">e</tspan><tspan class="bold">r</tspan>
+      </text>
+      
+      <!-- mønster -->
+      <text id="word3" x="200" y="50">
+        <tspan class="bold">m</tspan><tspan class="grey">øn</tspan><tspan class="bold">st</tspan><tspan class="grey">e</tspan><tspan class="bold">r</tspan>
+      </text>
+      
+      <!-- halmstrå -->
+      <text id="word4" x="200" y="50">
+        <tspan class="grey">hal</tspan><tspan class="bold">mstr</tspan><tspan class="grey">å</tspan>
+      </text>
+      
+      <!-- omstrukturering -->
+      <text id="word5" x="200" y="50">
+        <tspan class="grey">o</tspan><tspan class="bold">mstr</tspan><tspan class="grey">ukturering</tspan>
+      </text>
     </g>
   </svg>
 
