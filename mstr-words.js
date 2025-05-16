@@ -26,4 +26,6 @@ let words = [
   "Manchester",
   "målstreg",
   "rumstationer",
+  "mistroisk",
+  "atmosfærisk tryk",
 ];
