@@ -1,7 +1,7 @@
 // Words containing 'mstr'
 let words = [
   "hamster",
-  "mønster",
+  "mønsterborger",
   "halmstrå",
   "omstrukturering",
   "statsminister",
@@ -11,5 +11,13 @@ let words = [
   "feminister",
   "medium str.",
   "smagsforstyrrelse",
+  "medister",
   "salmestrofe",
+  "webmaster",
+  "toastmaster",
+  "tremaster",
+  "sprechstallmeister",
+  "madrester",
+  "kriminalregister",
+  "flammekaster",
 ];
