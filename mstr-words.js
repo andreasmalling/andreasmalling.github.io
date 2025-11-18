@@ -28,4 +28,13 @@ let words = [
   "rumstationer",
   "mistroisk",
   "atmosfærisk tryk",
+  "himstregims",
+  "varmestuer",
+  "kampstrategi",
+  "musikterapi",
+  "lommestrikkeri",
+  "skumstribe",
+  "dampskibstransport",
+  "demonstrant",
+  "komposterende",
 ];
